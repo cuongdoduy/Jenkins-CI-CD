@@ -50,14 +50,11 @@ pipeline {
                 echo 'Deploying to Dev environment'
                 withDockerRegistry(credentialsId: 'dockerhub', url: 'https://index.docker.io/v1/') {
                     sh 'docker image pull cuongdoduy/starter-server-typescript'
-                    sh 'docker-compose -f down -v'
-                    sh 'docker-compose up -d'
+                    sh 'docker compose down -v'
+                    sh 'docker compose up -d'
                 }
             }
         }
-
-        
- 
     }
     post {
         // Clean after build
