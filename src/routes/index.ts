@@ -4,7 +4,7 @@ import express from 'express';
 const routes = express.Router();
 
 routes.get('/', (req: express.Request, res: express.Response) => {
-  res.send('API');
+  res.send('APIs');
 });
 routes.use('/teacher', teachers);
 routes.use('/student', students);
