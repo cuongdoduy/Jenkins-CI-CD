@@ -10,16 +10,16 @@ pipeline {
     }
     stages {
 
-        stage('Checkout') {
-            steps {
-                echo 'Checking out code..'
-                script {
-                    git branch: 'main',
-                        credentialsId: 'git-credentials',
-                        url: 'https://github.com/cuongdoduy/Jenkins-CI-CD'
-                } 
-            }
-        }
+        // stage('Checkout') {
+        //     steps {
+        //         echo 'Checking out code..'
+        //         script {
+        //             git branch: 'main',
+        //                 credentialsId: 'git-credentials',
+        //                 url: 'https://github.com/cuongdoduy/Jenkins-CI-CD'
+        //         } 
+        //     }
+        // }
 
        
         stage('Build with NodeJS') {
