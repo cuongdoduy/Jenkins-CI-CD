@@ -16,7 +16,7 @@ pipeline {
                 script {
                     git branch: 'main',
                         credentialsId: 'git-credentials',
-                        url: 'https://github.com/cuongdoduy/starter-with-nodejs.git'
+                        url: 'https://github.com/cuongdoduy/Jenkins-CI-CD'
                 } 
             }
         }
@@ -38,15 +38,15 @@ pipeline {
         }
 
 
-        stage('Packaging/Pushing image') {
+        // stage('Packaging/Pushing image') {
 
-            steps {
-                withDockerRegistry(credentialsId: 'dockerhub', url: 'https://index.docker.io/v1/') {
-                    sh 'docker build -t khaliddinh/springboot .'
-                    sh 'docker push khaliddinh/springboot'
-                }
-            }
-        }
+        //     steps {
+        //         withDockerRegistry(credentialsId: 'dockerhub', url: 'https://index.docker.io/v1/') {
+        //             sh 'docker build -t khaliddinh/springboot .'
+        //             sh 'docker push khaliddinh/springboot'
+        //         }
+        //     }
+        // }
 
         // stage('Deploy MySQL to DEV') {
         //     steps {
