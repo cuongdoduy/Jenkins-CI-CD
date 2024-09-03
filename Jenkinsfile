@@ -38,7 +38,9 @@ pipeline {
         stage('Build Docker image') {
             steps {
                 echo 'Building Docker image'
-                sh 'docker build . -t cuongdoduy/starter-server-typescript'
+                withDockerRegistry(credentialsId: 'dockerhub', url: 'https://index.docker.io/v1/') {
+                    sh 'docker build -t starter-server-typescript .'
+                }
             }
         }
  
