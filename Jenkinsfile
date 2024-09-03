@@ -39,10 +39,24 @@ pipeline {
             steps {
                 echo 'Building Docker image'
                 withDockerRegistry(credentialsId: 'dockerhub', url: 'https://index.docker.io/v1/') {
-                    sh 'docker build -t starter-server-typescript .'
+                    sh 'docker build -t cuongdoduy/starter-server-typescript .'
+                    sh 'docker push cuongdoduy/starter-server-typescript'
                 }
             }
         }
+
+        stage('Deployment') {
+            steps{
+                echo 'Deploying to Dev environment'
+                withDockerRegistry(credentialsId: 'dockerhub', url: 'https://index.docker.io/v1/') {
+                    sh 'docker image pull cuongdoduy/starter-server-typescript'
+                    sh 'docker-compose -f down -v'
+                    sh 'docker-compose up -d'
+                }
+            }
+        }
+
+        
  
     }
     post {

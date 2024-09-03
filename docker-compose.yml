@@ -1,0 +1,9 @@
+version: '3.9'
+
+services:
+  api:
+    image: cuongdoduy/starter-server-typescript
+    container_name: starter-api
+    restart: unless-stopped
+    ports:
+      - 5000:5000
