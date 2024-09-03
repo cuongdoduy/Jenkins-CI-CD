@@ -26,7 +26,7 @@ pipeline {
             }
         }
 
-        stage('Deployment') {
+        stage('Approval') {
 
             steps {
                 timeout(time: 5, unit: 'MINUTES') {
@@ -45,16 +45,16 @@ pipeline {
             }
         }
 
-        // stage('Deployment') {
-        //     steps{
-        //         echo 'Deploying to Dev environment'
-        //         withDockerRegistry(credentialsId: 'dockerhub', url: 'https://index.docker.io/v1/') {
-        //             sh 'docker image pull cuongdoduy/starter-server-typescript'
-        //             sh 'docker-compose -f down -v'
-        //             sh 'docker-compose up -d'
-        //         }
-        //     }
-        // }
+        stage('Deployment') {
+            steps{
+                echo 'Deploying to Dev environment'
+                withDockerRegistry(credentialsId: 'dockerhub', url: 'https://index.docker.io/v1/') {
+                    sh 'docker image pull cuongdoduy/starter-server-typescript'
+                    sh 'docker-compose -f down -v'
+                    sh 'docker-compose up -d'
+                }
+            }
+        }
 
         
  
