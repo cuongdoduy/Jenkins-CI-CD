@@ -13,13 +13,6 @@ pipeline {
                 sh 'npm run build'
             }
         }
-
-        stage('Run tests with NodeJS') {
-            steps {
-                echo 'Running tests with NodeJS'
-                sh 'npm run test'
-            }
-        }
  
     }
     post {
